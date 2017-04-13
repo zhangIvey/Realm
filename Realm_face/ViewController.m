@@ -17,6 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    //主分支测试
+    
     UIView *tempview = [[UIView alloc] init];
     tempview.backgroundColor = [UIColor redColor];
     tempview.frame = self.view.frame;
