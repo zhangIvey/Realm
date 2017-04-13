@@ -24,6 +24,8 @@
     tempview.backgroundColor = [UIColor redColor];
     tempview.frame = self.view.frame;
     [self.view addSubview:tempview];
+    
+    //add_cocoapod分支测试
 }
 
 
