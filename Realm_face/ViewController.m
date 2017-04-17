@@ -68,12 +68,19 @@
     //========================= 等效方法
 //    [realm beginWriteTransaction];
 //    [realm addObject:dog2];
+//    [realm addObject:master];
 //    [realm commitWriteTransaction];
     //=========================
     NSLog(@"result : %@",results);
     
+    //遍历打印
+    for (Dog *tempDog in results) {
+        NSLog(@"=========================");
+        NSLog(@"tempDog.dogName = %@",tempDog.dogName);
+        NSLog(@"tempDog.dogAge = %d",tempDog.dogAge);
+    }
     
-    
+
     //4：线程操作
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
      //   （千万注意：不要跨线程去操作和处理对象 ）
