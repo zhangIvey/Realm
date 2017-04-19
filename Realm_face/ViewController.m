@@ -11,6 +11,10 @@
 
 #import "Dog.h"
 #import "Person.h"
+
+#import "Anthor.h"
+#import "Post.h"
+
 @interface ViewController ()
 
 @end
@@ -80,7 +84,6 @@
         NSLog(@"tempDog.dogAge = %d",tempDog.dogAge);
     }
     
-
     //4：线程操作
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
      //   （千万注意：不要跨线程去操作和处理对象 ）
@@ -93,6 +96,27 @@
         [realm addObject:dog3];
         [realm commitWriteTransaction];
     });
+    
+    
+    /*Realm数据模型的制作流程*/
+//    @[@"title",@"anthor",@"time",@"content"];
+    Post *post1 = [[Post alloc] initWithValue:@{@"title":@"测试帖",@"time":[NSDate date],@"content":@"文章内容不能为空，简单写点东西"}];
+    Anthor *anthor = [[Anthor alloc] initWithValue:@{@"anthorName":@"张总"}];
+    post1.anthor = anthor;
+    
+    [realm transactionWithBlock:^{
+        [realm addObject:post1];
+        [realm addObject:anthor];
+        
+    }];
+    
+    results = [Post allObjects];
+    NSLog(@"result %@",results);
+    
+    results = [Anthor allObjects];
+    NSLog(@"result %@",results);
+    
+    
 }
 
 
